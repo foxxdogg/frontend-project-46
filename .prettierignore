@@ -1,0 +1,5 @@
+/.github/workflows/hexlet-check.yml
+/coverage
+/node_modules
+*.json
+Makefile
