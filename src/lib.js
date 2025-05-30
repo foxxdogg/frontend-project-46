@@ -7,6 +7,7 @@ const getAbsolutePath = (filepath) => {
     : path.resolve(process.cwd(), filepath);
   return absFilePath;
 };
+
 const readFile = (filepath) => {
   const absolutePath = getAbsolutePath(filepath);
   if (!existsSync(absolutePath)) {
@@ -45,4 +46,46 @@ const loadParsedFiles = (filepath1, filepath2) => {
   ];
 };
 
-export default loadParsedFiles;
+const isEmpty = (obj) => obj && Object.keys(obj).length === 0;
+const formatLine = (sign, key, value) => `${sign} ${key}: ${value}`;
+
+const genDiff = (original, updated) => {
+  if (isEmpty(original) || isEmpty(updated)) {
+    const sign = isEmpty(original) ? '+' : '-';
+    const entries = isEmpty(original) ? updated : original;
+    const sorted = [...Object.entries(entries)].sort();
+    const string = sorted
+      .map(([key, value]) => formatLine(sign, key, value))
+      .join('\n');
+    return `{\n${string}\n}`;
+  }
+
+  const keys = [...new Set([...Object.keys(original), ...Object.keys(updated)])].sort();
+  const lines = keys.flatMap((key) => {
+    const originalValue = original[key];
+    const updatedValue = updated[key];
+    const hasOrig = Object.hasOwn(original, key);
+    const hasUpd = Object.hasOwn(updated, key);
+    if (
+      hasOrig
+      && hasUpd
+      && originalValue === updatedValue
+    ) {
+      return formatLine(' ', key, updatedValue);
+    }
+    if (
+      hasOrig
+      && hasUpd
+      && originalValue !== updatedValue
+    ) {
+      return [formatLine('-', key, originalValue), formatLine('+', key, updatedValue)];
+    }
+    if (!hasOrig) {
+      return formatLine('+', key, updatedValue);
+    }
+    return formatLine('-', key, originalValue);
+  });
+  return `{\n${lines.join('\n')}\n}`;
+};
+
+export { loadParsedFiles, genDiff };

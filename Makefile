@@ -1,3 +1,5 @@
+DEMO=src/asciinemas/demo.cast
+
 install:
 	npm ci
 
@@ -19,5 +21,11 @@ tree:
 
 gendiff:
 	gendiff src/data/file1.json src/data/file2.json
+
+asc: 
+	asciinema rec $(DEMO) --overwrite
+
+upload:
+	asciinema upload $(DEMO)
 
 .PHONY: test

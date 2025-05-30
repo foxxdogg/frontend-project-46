@@ -3,16 +3,11 @@
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/foxxdogg/frontend-project-46/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/foxxdogg/frontend-project-46/actions)",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "test": "jest"
+    "test": "node --experimental-vm-modules ./node_modules/.bin/jest"
   },
-  "jest": {
-    "collectCoverage": true,
-    "coverageReporters": [
-      "lcov",
-      "text"
-    ]
-  },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/foxxdogg/frontend-project-46.git"
@@ -23,7 +18,6 @@
     "url": "https://github.com/foxxdogg/frontend-project-46/issues"
   },
   "homepage": "https://github.com/foxxdogg/frontend-project-46#readme",
-  "type": "module",
   "bin": {
     "gendiff": "bin/gendiff.js"
   },

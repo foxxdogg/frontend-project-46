@@ -1,4 +1,4 @@
 #!/usr/bin/env node
-import genDiff from '../index.js';
+import runApp from '../index.js';
 
-genDiff();
+runApp();
