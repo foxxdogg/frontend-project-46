@@ -53,14 +53,14 @@ const genDiff = (original, updated) => {
   if (isEmpty(original) || isEmpty(updated)) {
     const sign = isEmpty(original) ? '+' : '-';
     const entries = isEmpty(original) ? updated : original;
-    const sorted = [...Object.entries(entries)].sort();
+    const sorted = [...Object.entries(entries)].sort((a, b) => a.localeCompare(b));
     const string = sorted
       .map(([key, value]) => formatLine(sign, key, value))
       .join('\n');
     return `{\n${string}\n}`;
   }
 
-  const keys = [...new Set([...Object.keys(original), ...Object.keys(updated)])].sort();
+  const keys = [...new Set([...Object.keys(original), ...Object.keys(updated)])].sort((a, b) => a.localeCompare(b));
   const lines = keys.flatMap((key) => {
     const originalValue = original[key];
     const updatedValue = updated[key];
@@ -71,7 +71,7 @@ const genDiff = (original, updated) => {
       && hasUpd
       && originalValue === updatedValue
     ) {
-      return formatLine(' ', key, updatedValue);
+      return [formatLine(' ', key, updatedValue)];
     }
     if (
       hasOrig
@@ -81,9 +81,9 @@ const genDiff = (original, updated) => {
       return [formatLine('-', key, originalValue), formatLine('+', key, updatedValue)];
     }
     if (!hasOrig) {
-      return formatLine('+', key, updatedValue);
+      return [formatLine('+', key, updatedValue)];
     }
-    return formatLine('-', key, originalValue);
+    return [formatLine('-', key, originalValue)];
   });
   return `{\n${lines.join('\n')}\n}`;
 };
