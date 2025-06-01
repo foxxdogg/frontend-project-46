@@ -1,4 +1,5 @@
 /.github/workflows/hexlet-check.yml
+/.github/workflows/ci.yml
 /coverage
 /node_modules
 *.json

@@ -60,25 +60,22 @@ const genDiff = (original, updated) => {
     return `{\n${string}\n}`;
   }
 
-  const keys = [...new Set([...Object.keys(original), ...Object.keys(updated)])].sort((a, b) => a.localeCompare(b));
+  const keys = [
+    ...new Set([...Object.keys(original), ...Object.keys(updated)]),
+  ].sort((a, b) => a.localeCompare(b));
   const lines = keys.flatMap((key) => {
     const originalValue = original[key];
     const updatedValue = updated[key];
     const hasOrig = Object.hasOwn(original, key);
     const hasUpd = Object.hasOwn(updated, key);
-    if (
-      hasOrig
-      && hasUpd
-      && originalValue === updatedValue
-    ) {
+    if (hasOrig && hasUpd && originalValue === updatedValue) {
       return [formatLine(' ', key, updatedValue)];
     }
-    if (
-      hasOrig
-      && hasUpd
-      && originalValue !== updatedValue
-    ) {
-      return [formatLine('-', key, originalValue), formatLine('+', key, updatedValue)];
+    if (hasOrig && hasUpd && originalValue !== updatedValue) {
+      return [
+        formatLine('-', key, originalValue),
+        formatLine('+', key, updatedValue),
+      ];
     }
     if (!hasOrig) {
       return [formatLine('+', key, updatedValue)];
