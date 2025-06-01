@@ -4,7 +4,7 @@ install:
 	npm ci
 
 lint:
-	npx eslint . --fix
+	npx eslint .
 
 pretty:
 	npx prettier --write .
@@ -15,6 +15,9 @@ format:
 	
 test:
 	npm test
+
+test-watch:
+	npm test -- --watch
 
 tree:
 	tree -I 'node_modules|dist|.git|coverage|.github|.gitignore|cc-test-reporter|editorconfig.txt|eslint.config.js' -L 3
@@ -27,5 +30,8 @@ asc:
 
 upload:
 	asciinema upload $(DEMO)
+
+test-coverage:
+	npm run test:coverage
 
 .PHONY: test
