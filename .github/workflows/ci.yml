@@ -35,5 +35,6 @@ jobs:
             -Dsonar.projectKey=foxxdogg_frontend-project-46
             -Dsonar.organization=foxxdogg
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
+            -Dsonar.coverage.exclusions=**/__tests__/**
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
