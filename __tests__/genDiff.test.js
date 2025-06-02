@@ -1,17 +1,45 @@
-import { genDiff } from '../src/lib.js';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
+import path from 'path';
+import { genDiff, loadParsedFiles } from '../src/lib.js';
 
-describe('genDiff', () => {
-  test('returns no changes for equal objects', () => {
-    const original = { a: 1 };
-    const updated = { a: 1 };
-    const expected = '{\n  a: 1\n}';
-    expect(genDiff(original, updated)).toBe(expected);
-  });
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-  test('returns empty diff for empty objects', () => {
-    const original = {};
-    const updated = {};
-    const expected = '{\n\n}';
-    expect(genDiff(original, updated)).toBe(expected);
+const getFixturePath = (filename, caseName) => path.join(
+  __dirname,
+  '..',
+  '__fixtures__',
+  'genDiffCases',
+  caseName,
+  filename,
+);
+
+describe('genDiff flat JSON tests with fixtures', () => {
+  const cases = [
+    'identical',
+    'added',
+    'removed',
+    'changed',
+    'removed_and_added',
+    'mixed',
+    'sorted_keys',
+  ];
+
+  cases.forEach((caseName) => {
+    test(`case: ${caseName}`, () => {
+      const [original, updated] = loadParsedFiles(
+        getFixturePath('file1.json', caseName),
+        getFixturePath('file2.json', caseName),
+      );
+      const expected = fs.readFileSync(
+        getFixturePath('expected.txt', caseName),
+        'utf-8',
+      );
+      const received = genDiff(original, updated);
+      expect(received.trim().replace(/\r\n/g, '\n')).toBe(
+        expected.trim().replace(/\r\n/g, '\n'),
+      );
+    });
   });
 });

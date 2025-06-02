@@ -53,7 +53,7 @@ const genDiff = (original, updated) => {
   if (isEmpty(original) || isEmpty(updated)) {
     const sign = isEmpty(original) ? '+' : '-';
     const entries = isEmpty(original) ? updated : original;
-    const sorted = [...Object.entries(entries)].sort((a, b) => a.localeCompare(b));
+    const sorted = [...Object.entries(entries)].sort(([keyA], [keyB]) => keyA.localeCompare(keyB));
     const string = sorted
       .map(([key, value]) => formatLine(sign, key, value))
       .join('\n');
