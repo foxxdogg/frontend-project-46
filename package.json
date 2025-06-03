@@ -8,7 +8,6 @@
     "test": "node --experimental-vm-modules ./node_modules/.bin/jest",
     "test:coverage": "node --experimental-vm-modules ./node_modules/.bin/jest --coverage"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/foxxdogg/frontend-project-46.git"
@@ -39,6 +38,7 @@
     "prettier": "^3.5.3"
   },
   "dependencies": {
-    "commander": "^14.0.0"
+    "commander": "^14.0.0",
+    "js-yaml": "^4.1.0"
   }
 }

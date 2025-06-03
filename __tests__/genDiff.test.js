@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 import path from 'path';
-import { genDiff, loadParsedFiles } from '../src/lib.js';
+import { genDiff, loadParsedFiles, normalize } from '../src/lib.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,31 +15,34 @@ const getFixturePath = (filename, caseName) => path.join(
   filename,
 );
 
-describe('genDiff flat JSON tests with fixtures', () => {
-  const cases = [
-    'identical',
-    'added',
-    'removed',
-    'changed',
-    'removed_and_added',
-    'mixed',
-    'sorted_keys',
-  ];
+const cases = [
+  'identical',
+  'added',
+  'removed',
+  'changed',
+  'removed_and_added',
+  'mixed',
+  'sorted_keys',
+];
 
-  cases.forEach((caseName) => {
-    test(`case: ${caseName}`, () => {
-      const [original, updated] = loadParsedFiles(
-        getFixturePath('file1.json', caseName),
-        getFixturePath('file2.json', caseName),
-      );
-      const expected = fs.readFileSync(
-        getFixturePath('expected.txt', caseName),
-        'utf-8',
-      );
-      const received = genDiff(original, updated);
-      expect(received.trim().replace(/\r\n/g, '\n')).toBe(
-        expected.trim().replace(/\r\n/g, '\n'),
-      );
+[
+  { ext: 'json', desc: 'flat JSON' },
+  { ext: 'yml', desc: 'flat YML/YAML' },
+].forEach(({ ext, desc }) => {
+  describe(`genDiff ${desc} tests with fixtures`, () => {
+    cases.forEach((caseName) => {
+      test(`case: ${caseName}`, () => {
+        const [original, updated] = loadParsedFiles(
+          getFixturePath(`file1.${ext}`, caseName),
+          getFixturePath(`file2.${ext}`, caseName),
+        );
+        const expected = fs.readFileSync(
+          getFixturePath('expected.txt', caseName),
+          'utf-8',
+        );
+        const received = genDiff(original, updated);
+        expect(normalize(received)).toBe(normalize(expected));
+      });
     });
   });
 });

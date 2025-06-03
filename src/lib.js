@@ -1,5 +1,6 @@
 import { readFileSync, existsSync } from 'fs';
 import path from 'path';
+import parseFile from './parser.js';
 
 const getAbsolutePath = (filepath) => {
   const absFilePath = path.isAbsolute(filepath)
@@ -18,17 +19,6 @@ const readFile = (filepath) => {
   } catch (error) {
     throw new Error(`Failed to read file: ${filepath}\n${error.message}`);
   }
-};
-
-const parseFile = (content, format) => {
-  if (format === 'json') {
-    try {
-      return JSON.parse(content);
-    } catch (error) {
-      throw new Error(`Failed to parse JSON: ${error.message}`);
-    }
-  }
-  throw new Error(`Unsupported file format: ${format}`);
 };
 
 const getFileFormat = (filepath) => {
@@ -85,4 +75,6 @@ const genDiff = (original, updated) => {
   return `{\n${lines.join('\n')}\n}`;
 };
 
-export { loadParsedFiles, genDiff };
+const normalize = (text) => text.trim().replace(/\r\n/g, '\n');
+
+export { loadParsedFiles, genDiff, normalize };

@@ -25,6 +25,9 @@ tree:
 gendiff:
 	gendiff src/data/file1.json src/data/file2.json
 
+gendiff2:
+	gendiff src/data/file1.yml src/data/file2.yml
+
 asc: 
 	asciinema rec $(DEMO) --overwrite
 
