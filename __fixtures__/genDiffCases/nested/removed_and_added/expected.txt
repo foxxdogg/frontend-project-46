@@ -1,0 +1,9 @@
+{
+    user: {
+      - active: true
+      - age: 30
+      + email: bob@example.com
+      - name: Alice
+      + name: Bob
+    }
+}

@@ -28,6 +28,9 @@ gendiff:
 gendiff2:
 	gendiff src/data/file1.yml src/data/file2.yml
 
+gendiff3:
+	gendiff __fixtures__/genDiffCases/nested/mixed/file1.yml __fixtures__/genDiffCases/nested/mixed/file2.yml
+
 asc: 
 	asciinema rec $(DEMO) --overwrite
 

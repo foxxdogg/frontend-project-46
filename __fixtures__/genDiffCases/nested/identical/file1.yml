@@ -1,0 +1,5 @@
+user:
+  name: Alice
+  info:
+    age: 30
+    active: true

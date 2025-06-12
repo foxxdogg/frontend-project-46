@@ -11,23 +11,24 @@ const getFixturePath = (filename, caseName) => path.join(
   '..',
   '__fixtures__',
   'genDiffCases',
+  'nested',
   caseName,
   filename,
 );
 
 const cases = [
+  'mixed',
   'identical',
   'added',
   'removed',
   'changed',
   'removed_and_added',
-  'mixed',
   'sorted_keys',
 ];
 
 [
-  { ext: 'json', desc: 'flat JSON' },
-  { ext: 'yml', desc: 'flat YML/YAML' },
+  { ext: 'json', desc: 'JSON' },
+  { ext: 'yml', desc: 'YML/YAML' },
 ].forEach(({ ext, desc }) => {
   describe(`genDiff ${desc} tests with fixtures`, () => {
     cases.forEach((caseName) => {
@@ -40,7 +41,7 @@ const cases = [
           getFixturePath('expected.txt', caseName),
           'utf-8',
         );
-        const received = genDiff(original, updated);
+        const received = genDiff(original, updated, 'stylish');
         expect(normalize(received)).toBe(normalize(expected));
       });
     });

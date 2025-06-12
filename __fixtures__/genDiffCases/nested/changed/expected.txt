@@ -1,0 +1,9 @@
+{
+    user: {
+      - active: true
+      + active: false
+      - age: 30
+      + age: 31
+        name: Alice
+    }
+}

@@ -1,0 +1,7 @@
+{
+    settings: {
+        alpha: true
+        beta: false
+        zeta: 1
+    }
+}

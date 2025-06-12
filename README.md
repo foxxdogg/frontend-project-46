@@ -9,3 +9,5 @@
 [ASCIINEMA (step 4)](https://asciinema.org/a/juSuy7kDSvrQAFqS6PTK8GhnM)
 
 [ASCIINEMA (step 6)](https://asciinema.org/a/pu7vSQ6X3hriGfGvhbacaGlWD)
+
+[ASCIINEMA (step 7)]((https://asciinema.org/a/6UMbzPGcoSm15WJn10TFlx105))
