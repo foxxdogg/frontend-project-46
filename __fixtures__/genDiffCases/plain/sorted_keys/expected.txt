@@ -1,0 +1,3 @@
+Property 'a' was removed
+Property 'b' was updated. From 2 to 3
+Property 'c' was updated. From 3 to 4

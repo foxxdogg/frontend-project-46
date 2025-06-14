@@ -1,0 +1,2 @@
+Property 'proxy' was removed
+Property 'timeout' was removed
