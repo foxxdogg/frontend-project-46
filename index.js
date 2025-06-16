@@ -15,7 +15,6 @@ const runApp = () => {
         console.log(genDiff(file1, file2, format));
       } catch (error) {
         console.error(`Error: ${error.message}`);
-        process.exit(1);
       }
     });
   program.parse(process.argv);
