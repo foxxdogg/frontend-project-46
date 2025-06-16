@@ -21,4 +21,8 @@ const runApp = () => {
   program.parse(process.argv);
 };
 
+if (import.meta.url === `file://${process.argv[1]}`) {
+  runApp();
+}
+
 export default runApp;
