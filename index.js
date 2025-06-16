@@ -9,7 +9,7 @@ const runApp = () => {
     .argument('<filepath1>')
     .argument('<filepath2>')
     .action(
-      (filepath1 = 'default1.json', filepath2 = 'default2.json', options) => {
+      (options, filepath1 = 'default1.json', filepath2 = 'default2.json') => {
         try {
           const { format } = options;
           const [file1, file2] = loadParsedFiles(filepath1, filepath2);
