@@ -1,7 +1,8 @@
-import { program } from 'commander';
+import { Command } from 'commander';
 import { loadParsedFiles, genDiff } from './src/lib.js';
 
 const runApp = (argv = process.argv) => {
+  const program = new Command();
   program
     .description('Compares two configuration files and shows a difference.')
     .version('1.0.0')
