@@ -1,7 +1,7 @@
 import { program } from 'commander';
 import { loadParsedFiles, genDiff } from './src/lib.js';
 
-const runApp = () => {
+const runApp = (argv = process.argv) => {
   program
     .description('Compares two configuration files and shows a difference.')
     .version('1.0.0')
@@ -20,11 +20,7 @@ const runApp = () => {
         }
       },
     );
-  program.parse(process.argv);
+  program.parse(argv);
 };
-
-if (import.meta.url === `file://${process.argv[1]}`) {
-  runApp();
-}
 
 export default runApp;
