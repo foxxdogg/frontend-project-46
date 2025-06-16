@@ -8,20 +8,19 @@ const runApp = () => {
     .option('-f, --format [type]', 'output format', 'stylish')
     .argument('<filepath1>')
     .argument('<filepath2>')
-    .action((filepath1, filepath2, options) => {
-      try {
-        const { format } = options;
-        const [file1, file2] = loadParsedFiles(filepath1, filepath2);
-        console.log(genDiff(file1, file2, format));
-      } catch (error) {
-        console.error(`Error: ${error.message}`);
-      }
-    });
+    .action(
+      (filepath1 = 'default1.json', filepath2 = 'default2.json', options) => {
+        try {
+          const { format } = options;
+          const [file1, file2] = loadParsedFiles(filepath1, filepath2);
+          console.log(genDiff(file1, file2, format));
+        } catch (error) {
+          console.error(`Error: ${error.message}`);
+          process.exit(1);
+        }
+      },
+    );
   program.parse(process.argv);
 };
-
-if (import.meta.url === `file://${process.argv[1]}`) {
-  runApp();
-}
 
 export default runApp;
