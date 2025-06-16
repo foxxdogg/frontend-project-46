@@ -9,7 +9,7 @@ const runApp = () => {
     .argument('<filepath1>')
     .argument('<filepath2>')
     .action(
-      (options, filepath1 = 'default1.json', filepath2 = 'default2.json') => {
+      (filepath1, filepath2, options) => {
         try {
           const { format } = options;
           const [file1, file2] = loadParsedFiles(filepath1, filepath2);
@@ -22,5 +22,9 @@ const runApp = () => {
     );
   program.parse(process.argv);
 };
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  runApp();
+}
 
 export default runApp;
