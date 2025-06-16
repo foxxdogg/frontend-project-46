@@ -12,9 +12,6 @@ const getAbsolutePath = (filepath) => {
 
 const readFile = (filepath) => {
   const absolutePath = getAbsolutePath(filepath);
-  // if (!existsSync(absolutePath)) {
-  //   throw new Error(`File not found: ${filepath}`);
-  // }
   try {
     return readFileSync(absolutePath, 'utf-8');
   } catch (error) {

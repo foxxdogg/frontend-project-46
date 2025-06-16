@@ -13,3 +13,5 @@
 [ASCIINEMA (step 7)](https://asciinema.org/a/6UMbzPGcoSm15WJn10TFlx105)
 
 [ASCIINEMA (step 8)](https://asciinema.org/a/sdew8VNKTrIoAd07WSJwW9MGG)
+
+[ASCIINEMA (step 9)](https://asciinema.org/a/cuAPHJg1jVrKnxHxBIgMrioYD)

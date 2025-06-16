@@ -1,5 +1,6 @@
 import formatStylish from './stylish.js';
 import formatPlain from './plain.js';
+import formatJson from './json.js';
 
 const getFormatter = (format) => {
   let formatter;
@@ -11,6 +12,11 @@ const getFormatter = (format) => {
     formatter = formatPlain;
     return formatter;
   }
+  if (format === 'json') {
+    formatter = formatJson;
+    return formatter;
+  }
+
   throw new Error(`Unsupported format ${format}`);
 };
 

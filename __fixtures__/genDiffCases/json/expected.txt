@@ -1,0 +1,66 @@
+{
+  "changes": [
+    {
+      "name": "common.follow",
+      "status": "added",
+      "value": false
+    },
+    {
+      "name": "common.setting2",
+      "status": "removed",
+      "value": 200
+    },
+    {
+      "name": "common.setting3",
+      "status": "updated",
+      "oldValue": true,
+      "newValue": null
+    },
+    {
+      "name": "common.setting4",
+      "status": "added",
+      "value": "blah blah"
+    },
+    {
+      "name": "common.setting5",
+      "status": "added",
+      "value": {
+        "key5": "value5"
+      }
+    },
+    {
+      "name": "common.setting6.doge.wow",
+      "status": "updated",
+      "oldValue": "",
+      "newValue": "so much"
+    },
+    {
+      "name": "group1.baz",
+      "status": "updated",
+      "oldValue": "bas",
+      "newValue": "bars"
+    },
+    {
+      "name": "group2",
+      "status": "removed",
+      "value": {
+        "abc": 12345,
+        "deep": {
+          "id": 45
+        }
+      }
+    },
+    {
+      "name": "group3",
+      "status": "added",
+      "value": {
+        "deep": {
+          "id": {
+            "number": 45
+          }
+        },
+        "fee": 100500
+      }
+    }
+  ]
+}

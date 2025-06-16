@@ -2,7 +2,8 @@ const isPlainObject = (val) => typeof val === 'object' && val !== null && !Array
 
 const formatValue = (val) => {
   if (isPlainObject(val)) return '[complex value]';
-  if (typeof val === 'string' && val !== 'false' && val !== 'true') return `'${val}'`;
+  if (val === null) return 'null';
+  if (typeof val === 'string') return `'${val}'`;
   return val;
 };
 

@@ -16,7 +16,15 @@ const getFixturePath = (filename, caseName) => path.join(
   filename,
 );
 
-const plainCases = ['identical', 'mixed', 'added', 'removed', 'changed', 'removed_and_added', 'sorted_keys'];
+const plainCases = [
+  'identical',
+  'mixed',
+  'added',
+  'removed',
+  'changed',
+  'removed_and_added',
+  'sorted_keys',
+];
 
 [
   { ext: 'json', desc: 'JSON' },
