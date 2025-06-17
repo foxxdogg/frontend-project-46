@@ -6,7 +6,7 @@ import getFormatter from './formatters/index.js';
 const getAbsolutePath = (filepath) => {
   const absFilePath = path.isAbsolute(filepath)
     ? filepath
-    : path.resolve(filepath);
+    : path.resolve(process.cwd(), filepath);
   return absFilePath;
 };
 

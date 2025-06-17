@@ -21,20 +21,7 @@ const runApp = (argv = process.argv) => {
       }
     });
 
-  let argvArray;
-
-  if (Array.isArray(argv)) {
-    argvArray = argv;
-  } else if (typeof argv === 'string') {
-    argvArray = ['node', 'gendiff', ...argv.split(' ')];
-  } else {
-    argvArray = ['node', 'gendiff'];
-  }
-  if (argvArray.length < 4) {
-    argvArray = ['node', 'gendiff', 'file1.yml', 'file2.yml'];
-  }
-
-  program.parse(argvArray);
+  program.parse(argv);
 };
 
 export default runApp;
