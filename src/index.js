@@ -1,14 +1,14 @@
 import { Command } from 'commander';
 import { loadParsedFiles, genDiff } from './buildDiff.js';
 
-const runApp = () => {
+const runApp = (argv = process.argv) => {
   const program = new Command();
   program
     .description('Compares two configuration files and shows a difference.')
     .version('1.0.0')
     .option('-f, --format [type]', 'output format', 'stylish')
-    .argument('<filepath1>')
-    .argument('<filepath2>')
+    .argument('[filepath1]')
+    .argument('[filepath2]')
     .action((filepath1, filepath2, options) => {
       try {
         const { format } = options;
@@ -20,7 +20,7 @@ const runApp = () => {
       }
     });
 
-  program.parse(process.argv);
+  program.parse(argv);
 };
 
 export default runApp;
