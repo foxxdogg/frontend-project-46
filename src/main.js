@@ -1,7 +1,7 @@
 import { Command } from 'commander';
 import { loadParsedFiles, genDiff } from './buildDiff.js';
 
-const runApp = (argv = process.argv) => {
+const runApp = () => {
   const program = new Command();
   program.exitOverride();
   program
@@ -21,7 +21,7 @@ const runApp = (argv = process.argv) => {
       }
     });
 
-  program.parse(argv);
+  program.parse();
 };
 
 export default runApp;
