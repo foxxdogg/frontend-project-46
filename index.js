@@ -28,13 +28,11 @@ const runApp = (argv = process.argv) => {
     program.parse(argvArray);
   } catch (error) {
     if (error.code === 'commander.missingArgument') {
-      console.error(`Error: ${error.message}`);
-      process.exit(1);
+      throw new Error(`Missing required argument: ${error.message}`);
     }
 
     if (error.code === 'commander.unknownOption') {
-      console.error(`Unknown option: ${error.message}`);
-      process.exit(1);
+      throw new Error(`Unknown option: ${error.message}`);
     }
 
     throw error;
