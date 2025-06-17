@@ -23,7 +23,7 @@ const runApp = (argv = process.argv) => {
   if (argv.length <= 2) {
     program.help({ error: true });
   }
-
+  console.log('argv:', argv);
   program.parse(argv);
 };
 
