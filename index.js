@@ -21,22 +21,10 @@ const runApp = (argv = process.argv) => {
       }
     });
 
-  try {
-    const argvArray = Array.isArray(argv)
-      ? argv
-      : ['node', 'gendiff', ...argv.split(' ')];
-    program.parse(argvArray);
-  } catch (error) {
-    if (error.code === 'commander.missingArgument') {
-      throw error;
-    }
-
-    if (error.code === 'commander.unknownOption') {
-      throw new Error(`Unknown option: ${error.message}`);
-    }
-
-    throw error;
-  }
+  const argvArray = Array.isArray(argv)
+    ? argv
+    : ['node', 'gendiff', ...argv.split(' ')];
+  program.parse(argvArray);
 };
 
 export default runApp;
