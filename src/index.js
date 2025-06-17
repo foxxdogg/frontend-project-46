@@ -1,5 +1,5 @@
 import { Command } from 'commander';
-import { loadParsedFiles, genDiff } from './src/lib.js';
+import { loadParsedFiles, genDiff } from './buildDiff.js';
 
 const runApp = (argv = process.argv) => {
   const program = new Command();

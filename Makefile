@@ -23,10 +23,10 @@ tree:
 	tree -I 'node_modules|dist|.git|coverage|.github|.gitignore|cc-test-reporter|editorconfig.txt|eslint.config.js' -L 3
 
 gendiff:
-	gendiff src/data/file1.json src/data/file2.json
+	gendiff data/file1.json data/file2.json
 
 gendiff2:
-	gendiff src/data/file1.yml src/data/file2.yml
+	gendiff data/file1.yml data/file2.yml
 
 gendiff3:
 	gendiff __fixtures__/genDiffCases/nested/mixed/file1.yml __fixtures__/genDiffCases/nested/mixed/file2.yml -f json
