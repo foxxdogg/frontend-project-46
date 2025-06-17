@@ -20,11 +20,17 @@ const runApp = (argv = process.argv) => {
       }
     });
 
-  if (argv.length <= 2) {
-    program.help({ error: true });
+  try {
+    const argvArray = Array.isArray(argv) ? argv : ['node', 'gendiff', ...argv.split(' ')];
+
+    program.parse(argvArray);
+  } catch (error) {
+    if (error.code === 'commander.missingArgument') {
+      console.error(`Error: ${error.message}`);
+      process.exit(1);
+    }
+    throw error;
   }
-  console.log('argv:', argv);
-  program.parse(argv);
 };
 
 export default runApp;
