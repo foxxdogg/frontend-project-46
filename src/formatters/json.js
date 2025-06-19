@@ -1,7 +1,7 @@
-const formatJson = (tree) => {
+const formatJson = tree => {
   const extractChanges = (nodes, parent = '') => nodes
     .filter(({ type }) => type !== 'unchanged')
-    .flatMap((node) => {
+    .flatMap(node => {
       const {
         key, type, value, newValue, oldValue, children,
       } = node

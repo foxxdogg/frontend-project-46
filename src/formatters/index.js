@@ -2,7 +2,7 @@ import formatStylish from './stylish.js'
 import formatPlain from './plain.js'
 import formatJson from './json.js'
 
-const getFormatter = (format) => {
+const getFormatter = format => {
   let formatter
   if (format === 'stylish') {
     formatter = formatStylish
