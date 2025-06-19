@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-import { Command } from 'commander';
-import { loadParsedFiles, genDiff } from '../src/buildDiff.js';
+import { Command } from 'commander'
+import { loadParsedFiles, genDiff } from '../src/buildDiff.js'
 
-const program = new Command();
-program.exitOverride();
+const program = new Command()
+program.exitOverride()
 program
   .description('Compares two configuration files and shows a difference.')
   .version('1.0.0')
@@ -12,13 +12,13 @@ program
   .argument('<filepath2>')
   .action((filepath1, filepath2, options) => {
     try {
-      const { format } = options;
-      const [file1, file2] = loadParsedFiles(filepath1, filepath2);
-      console.log(genDiff(file1, file2, format));
+      const { format } = options
+      const [file1, file2] = loadParsedFiles(filepath1, filepath2)
+      console.log(genDiff(file1, file2, format))
     } catch (error) {
-      console.error(`Error: ${error.message}`);
-      throw error;
+      console.error(`Error: ${error.message}`)
+      throw error
     }
-  });
+  })
 
-program.parse(process.argv);
+program.parse(process.argv)

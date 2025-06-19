@@ -3,4 +3,4 @@ export default {
   transform: {},
   collectCoverage: true,
   coverageReporters: ['lcov', 'text'],
-};
+}

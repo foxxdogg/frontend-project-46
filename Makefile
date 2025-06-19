@@ -11,7 +11,7 @@ pretty:
 
 format: 
 	npx prettier --write .
-	npx eslint --fix .
+	npx eslint . --fix
 	
 test:
 	npm test
