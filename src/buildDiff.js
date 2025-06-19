@@ -34,7 +34,8 @@ const loadParsedFiles = (filepath1, filepath2) => {
   ]
 }
 
-const isPlainObject = val => typeof val === 'object' && val !== null && !Array.isArray(val)
+const isPlainObject = val =>
+  typeof val === 'object' && val !== null && !Array.isArray(val)
 
 const genDiffTree = (original, updated) => {
   const keys = [
@@ -77,6 +78,4 @@ const genDiff = (original, updated, format = 'stylish') => {
 
 const normalize = text => text.replace(/\r\n/g, '\n')
 
-export {
-  loadParsedFiles, genDiff, normalize, isPlainObject,
-}
+export { loadParsedFiles, genDiff, normalize, isPlainObject }
