@@ -13,7 +13,8 @@ test('throws on invalid JSON', () => {
   const format = 'json'
   try {
     parseFile(content, format)
-  } catch (error) {
+  }
+  catch (error) {
     expect(error.message).toBe(`${error.message}`)
   }
 })
@@ -30,7 +31,8 @@ test('throws on invalid YAML', () => {
   const format = 'yml'
   try {
     parseFile(content, format)
-  } catch (error) {
+  }
+  catch (error) {
     expect(error.message).toBe(`${error.message}`)
   }
 })

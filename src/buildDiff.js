@@ -3,23 +3,24 @@ import path from 'path'
 import parseFile from './parser.js'
 import getFormatter from './formatters/index.js'
 
-const getAbsolutePath = filepath => {
+const getAbsolutePath = (filepath) => {
   const absFilePath = path.isAbsolute(filepath)
     ? filepath
     : path.resolve(process.cwd(), filepath)
   return absFilePath
 }
 
-const readFile = filepath => {
+const readFile = (filepath) => {
   const absolutePath = getAbsolutePath(filepath)
   try {
     return readFileSync(absolutePath, 'utf-8')
-  } catch (error) {
+  }
+  catch (error) {
     throw new Error(`Failed to read file: ${filepath}\n${error.message}`)
   }
 }
 
-const getFileFormat = filepath => {
+const getFileFormat = (filepath) => {
   const ext = path.extname(filepath).slice(1)
   if (!ext) throw new Error(`Cannot determine file format: ${filepath}`)
   return ext
@@ -41,7 +42,7 @@ const genDiffTree = (original, updated) => {
   const keys = [
     ...new Set([...Object.keys(original), ...Object.keys(updated)]),
   ].sort((a, b) => a.localeCompare(b))
-  return keys.map(key => {
+  return keys.map((key) => {
     const originalValue = original[key]
     const updatedValue = updated[key]
     const hasOrig = Object.hasOwn(original, key)

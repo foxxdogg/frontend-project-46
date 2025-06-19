@@ -1,7 +1,7 @@
 const isPlainObject = val =>
   typeof val === 'object' && val !== null && !Array.isArray(val)
 
-const formatValue = val => {
+const formatValue = (val) => {
   if (isPlainObject(val)) return '[complex value]'
   if (val === null) return 'null'
   if (typeof val === 'string') return `'${val}'`
@@ -13,7 +13,7 @@ const makePath = (parent, key) => `${parent}${key}`
 const formatPlain = (tree, parent = '') => {
   const lines = tree
     .filter(({ type }) => type !== 'unchanged')
-    .flatMap(node => {
+    .flatMap((node) => {
       const { key, type } = node
       const val = formatValue(node.value)
       const newVal = formatValue(node.newValue)

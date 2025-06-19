@@ -17,7 +17,7 @@ const formatValue = (val, depth = 1) => {
 
 const formatStylish = (tree, depth = 1) => {
   const bracketIndent = getIndent(depth - 1)
-  const lines = tree.flatMap(node => {
+  const lines = tree.flatMap((node) => {
     const { key, type } = node
     switch (type) {
       case 'added':

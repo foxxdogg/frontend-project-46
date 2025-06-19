@@ -32,7 +32,7 @@ const plainCases = [
   { ext: 'yml', desc: 'YML/YAML' },
 ].forEach(({ ext, desc }) => {
   describe(`genDiffPlain ${desc} tests with fixtures`, () => {
-    plainCases.forEach(caseName => {
+    plainCases.forEach((caseName) => {
       test(`case: ${caseName}`, () => {
         const [original, updated] = loadParsedFiles(
           getFixturePath(`file1.${ext}`, caseName),

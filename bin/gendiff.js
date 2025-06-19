@@ -15,7 +15,8 @@ program
       const { format } = options
       const [file1, file2] = loadParsedFiles(filepath1, filepath2)
       console.log(genDiff(file1, file2, format))
-    } catch (error) {
+    }
+    catch (error) {
       console.error(`Error: ${error.message}`)
       throw error
     }
