@@ -1,4 +1,5 @@
-const isPlainObject = (val) => typeof val === 'object' && val !== null && !Array.isArray(val);
+const isPlainObject = val =>
+  typeof val === 'object' && val !== null && !Array.isArray(val);
 
 const getIndent = (depth, shift = 0) => ' '.repeat(depth * 4 - shift);
 
@@ -16,7 +17,7 @@ const formatValue = (val, depth = 1) => {
 
 const formatStylish = (tree, depth = 1) => {
   const bracketIndent = getIndent(depth - 1);
-  const lines = tree.flatMap((node) => {
+  const lines = tree.flatMap(node => {
     const { key, type } = node;
     switch (type) {
       case 'added':

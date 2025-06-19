@@ -4,7 +4,7 @@ test('throws on unsupported file format', () => {
   const content = '';
   const format = 'yl';
   expect(() => parseFile(content, format)).toThrow(
-    `Unsupported file format: ${format}`,
+    `Unsupported file format: ${format}`
   );
 });
 
