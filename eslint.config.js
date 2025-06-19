@@ -23,6 +23,7 @@ export default [
       'stylistic/brace-style': ['error', '1tbs'],
       'stylistic/arrow-parens': ['error', 'as-needed'],
       'stylistic/quote-props': ['error', 'consistent-as-needed'],
+      'stylistic/comma-dangle': ['error', 'always-multiline'],
       'no-console': 'off',
       'no-underscore-dangle': ['error', { allow: ['__filename', '__dirname'] }],
     },

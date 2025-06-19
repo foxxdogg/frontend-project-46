@@ -17,7 +17,7 @@ const getFixturePath = filename =>
     test('case: json', () => {
       const [original, updated] = loadParsedFiles(
         getFixturePath(`file1.${ext}`),
-        getFixturePath(`file2.${ext}`)
+        getFixturePath(`file2.${ext}`),
       )
       const expected = fs.readFileSync(getFixturePath('expected.txt'), 'utf-8')
       const received = genDiff(original, updated, 'json')

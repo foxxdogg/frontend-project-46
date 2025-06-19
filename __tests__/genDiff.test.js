@@ -14,7 +14,7 @@ const getFixturePath = (filename, caseName) =>
     'genDiffCases',
     'nested',
     caseName,
-    filename
+    filename,
   )
 
 const cases = [
@@ -36,11 +36,11 @@ const cases = [
       test(`case: ${caseName}`, () => {
         const [original, updated] = loadParsedFiles(
           getFixturePath(`file1.${ext}`, caseName),
-          getFixturePath(`file2.${ext}`, caseName)
+          getFixturePath(`file2.${ext}`, caseName),
         )
         const expected = fs.readFileSync(
           getFixturePath('expected.txt', caseName),
-          'utf-8'
+          'utf-8',
         )
         const received = genDiff(original, updated, 'stylish')
         expect(normalize(received)).toBe(normalize(expected))
