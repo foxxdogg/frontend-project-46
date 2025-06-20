@@ -1,4 +1,5 @@
-import { loadParsedFiles, genDiff as genDiffFromData } from './buildDiff.js'
+import { genDiff as genDiffFromData } from './buildDiff.js'
+import { loadParsedFiles } from './parser.js'
 
 const genDiff = (filepath1, filepath2, format = 'stylish') => {
   const [file1, file2] = loadParsedFiles(filepath1, filepath2)

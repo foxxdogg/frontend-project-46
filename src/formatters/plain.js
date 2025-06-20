@@ -1,5 +1,4 @@
-const isPlainObject = val =>
-  typeof val === 'object' && val !== null && !Array.isArray(val)
+const isPlainObject = val => typeof val === 'object' && val !== null && !Array.isArray(val)
 
 const formatValue = (val) => {
   if (isPlainObject(val)) return '[complex value]'

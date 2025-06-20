@@ -1,21 +1,14 @@
 import fs from 'fs'
 import { fileURLToPath } from 'url'
 import path from 'path'
-import { genDiff, loadParsedFiles, normalize } from '../src/buildDiff.js'
+import { genDiff, normalize } from '../src/buildDiff.js'
+import { loadParsedFiles } from '../src/parser.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const getFixturePath = (filename, caseName) =>
-  path.join(
-    __dirname,
-    '..',
-    '__fixtures__',
-    'genDiffCases',
-    'nested',
-    caseName,
-    filename,
-  )
+  path.join(__dirname, '..', '__fixtures__', 'genDiffCases', 'nested', caseName, filename)
 
 const cases = [
   'mixed',
@@ -38,10 +31,7 @@ const cases = [
           getFixturePath(`file1.${ext}`, caseName),
           getFixturePath(`file2.${ext}`, caseName),
         )
-        const expected = fs.readFileSync(
-          getFixturePath('expected.txt', caseName),
-          'utf-8',
-        )
+        const expected = fs.readFileSync(getFixturePath('expected.txt', caseName), 'utf-8')
         const received = genDiff(original, updated, 'stylish')
         expect(normalize(received)).toBe(normalize(expected))
       })

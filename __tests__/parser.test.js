@@ -1,11 +1,9 @@
-import parseFile from '../src/parser.js'
+import { parseFile } from '../src/parser.js'
 
 test('throws on unsupported file format', () => {
   const content = ''
   const format = 'yl'
-  expect(() => parseFile(content, format)).toThrow(
-    `Unsupported file format: ${format}`,
-  )
+  expect(() => parseFile(content, format)).toThrow(`Unsupported file format: ${format}`)
 })
 
 test('throws on invalid JSON', () => {

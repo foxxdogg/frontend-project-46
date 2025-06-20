@@ -1,7 +1,8 @@
 import fs from 'fs'
 import { fileURLToPath } from 'url'
 import path from 'path'
-import { genDiff, loadParsedFiles, normalize } from '../src/buildDiff.js'
+import { genDiff, normalize } from '../src/buildDiff.js'
+import { loadParsedFiles } from '../src/parser.js'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)

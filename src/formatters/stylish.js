@@ -1,5 +1,4 @@
-const isPlainObject = val =>
-  typeof val === 'object' && val !== null && !Array.isArray(val)
+const isPlainObject = val => typeof val === 'object' && val !== null && !Array.isArray(val)
 
 const getIndent = (depth, shift = 0) => ' '.repeat(depth * 4 - shift)
 

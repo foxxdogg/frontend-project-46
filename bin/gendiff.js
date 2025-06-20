@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Command } from 'commander'
-import { loadParsedFiles, genDiff } from '../src/buildDiff.js'
+import genDiff from '../src/index.js'
 
 const program = new Command()
 program.exitOverride()
@@ -13,8 +13,7 @@ program
   .action((filepath1, filepath2, options) => {
     try {
       const { format } = options
-      const [file1, file2] = loadParsedFiles(filepath1, filepath2)
-      console.log(genDiff(file1, file2, format))
+      console.log(genDiff(filepath1, filepath2, format))
     }
     catch (error) {
       console.error(`Error: ${error.message}`)
